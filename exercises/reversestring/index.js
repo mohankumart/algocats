@@ -56,15 +56,32 @@ function countInstances(arr){
 
 function groupByProperty(arrObject, property){
     return arrObject.reduce((accumulate, currentObject)=>{
-        if(currentObject[property] in accumulate){
-            accumulate[currentObject[property]].push(currentObject);
-        }else{
-            accumulate[currentObject[property]] = [currentObject];
+        let key = currentObject[property];
+        if(!accumulate[key]){
+            accumulate[key] = [];
         }
+        accumulate[key].push(currentObject);
         return accumulate;
     },{});
 }
 
-console.log(groupByProperty([{name:'mohan',age:20},{name:'kumar',age:20},{name:'mohan',age:33}], 'age'));
+function bondingArrayObjects(arrObject){
+    return arrObject.reduce(((accumulate, currentObject)=>{
+        return [...accumulate,...currentObject.books];
+    }),[]);
+}
+
+function removeDuplicates(arr){
+    return arr.reduce((accumulate, currentItem)=>{
+        let length = accumulate.length;
+        if(length == 0 || accumulate[length-1] != currentItem){
+            accumulate.push(currentItem);
+        }
+        return accumulate;
+    },[]);
+}
+let array = [1,2,3,4,5,5];
+
+console.log(removeDuplicates(array));
 
 module.exports = {reverse, sum, sumOfValuesInObject, flattenArray, countInstances};
