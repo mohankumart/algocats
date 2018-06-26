@@ -9,11 +9,7 @@
 //   reverseInt(-90) === -9
 
 function reverseInt(n) {
-    let revesedN = parseInt(n.toString().split('').reduce((accumulate, currEle)=>accumulate = currEle + accumulate,''));
-    if(n < 0){
-        return revesedN * -1;
-    }
-    return revesedN;
+    return parseInt(n.toString().split('').reduce((accumulate, currEle)=>accumulate = currEle + accumulate,'')) * Math.sign(n);
 }
 
 console.log(reverseInt(-51));
