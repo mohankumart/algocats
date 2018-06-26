@@ -7,6 +7,47 @@
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
 
-function palindrome(str) {}
+// solution 1
+// function palindrome(str) {
+//     let start = 0;
+//     let end = str.length - 1;
+//     let isPalindrome = true;
+//     const regex = new RegExp('^[0-9a-zA-Z]');
 
+//     while((start!= end && (end-start) != 1) && end > start){
+        
+//         while(!str[start].match(regex)){
+//             start++;
+//         }
+//         while(!str[end].match(regex)){
+//             end--;
+//         }
+
+//         //if str[end] is equal to any special character ignore
+//         if(str[start].toLowerCase() != str[end].toLowerCase()){
+//             isPalindrome = false;
+//             return isPalindrome;
+//         }
+
+//         end--;
+//         start++;
+//     }
+//     return isPalindrome;
+// }
+
+// function palindrome(str){
+//     let reversed = '';
+//     for(let c of str){
+//         reversed = c + reversed;
+//     }
+//     return str === reversed;
+// }
+
+function palindrome(str){
+    return str.split('').every((element, index, currentArray) => {
+        return element == currentArray[currentArray.length - index -1];
+    });
+}
+
+console.log(palindrome('taaaat'));
 module.exports = palindrome;
