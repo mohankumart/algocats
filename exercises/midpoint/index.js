@@ -15,7 +15,6 @@
 const LinkedList = require('./linkedlist').LinkedList;
 
 function midpoint(list) {
-    debugger;
     if(list.head){
         let t1 = list.getFirst();
         let t2 = list.getFirst();
