@@ -126,16 +126,73 @@ class LinkedList {
 
 
         //Hanlde other all issues.
-        let count = 0, temp1, temp2;
+        let count = 1, temp1 = this.head, temp2 = this.head.next;
 
         while(count != index){
-            temp1 = this.head;
-            temp2 = this.head.next;
+            temp1 = temp1.next;
+            temp2 = temp2.next;
             count++;
         }
 
         if(count == index){
             temp1.next = temp2.next;
+        }
+    }
+
+
+    insertAt(data, index){
+
+        //Hanlde empty list case
+        if(index == 0 && !this.head){
+            const node = new Node(data);
+            this.head = node;
+            return;
+        }
+
+        //Handle insertfirst with list exists case
+        if(index == 0 && this.head){
+            const node = new Node(data);
+            node.next = this.head;
+            this.head = node;
+            return;
+        }
+
+        //out of bounds case
+        if(index > this.size() || index == this.size()){
+            this.insertLast(data);
+            return;
+        }
+
+        //insert at index case
+        let count = 1, temp1 = this.head, temp2 = this.head.next;
+        while(count != index){
+            temp1 = temp1.next;
+            temp2 = temp2.next;
+            count++;
+        }
+
+        if(count == index){
+            const node = new Node(data);
+            node.next = temp2;
+            temp1.next = node;
+            return;
+        }
+
+    }
+
+    forEach(fn){
+        let temp = this.head;
+        while(temp){
+            fn.call(null, temp);
+            temp = temp.next;
+        }
+    }
+
+    *[Symbol.iterator]() {
+        let node = this.head;
+        while(node){
+            yield node;
+            node = node.next;
         }
     }
 }
