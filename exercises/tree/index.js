@@ -28,12 +28,10 @@ class Node {
     }
 }
 
-class Tree {}
-
-const n = new Node('a');
-n.add('b');
-console.log(n.children.length);
-n.remove('b');
-console.log(n.children.length);
+class Tree {
+    constructor(){
+        this.root = null;
+    }
+}
 
 module.exports = { Tree, Node };
