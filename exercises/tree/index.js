@@ -43,7 +43,12 @@ class Tree {
     }
 
     traverseDF(fn) {
-        
+        const tempArray = [this.root];
+        while(tempArray.length){
+            const node = tempArray.shift();
+            tempArray.unshift(...node.children);
+            fn(node);
+        }
     }
 }
 
