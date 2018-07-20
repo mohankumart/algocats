@@ -41,7 +41,7 @@ class Tree {
             fn(node);
         }
     }
-
+    
     traverseDF(fn) {
         const tempArray = [this.root];
         while(tempArray.length){
@@ -51,6 +51,5 @@ class Tree {
         }
     }
 }
-
 
 module.exports = { Tree, Node };
